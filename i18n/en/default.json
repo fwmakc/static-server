@@ -9,17 +9,17 @@
   "features_subtitle": "Everything you need to serve static content and dynamic pages",
   "features": [
     {
-      "icon": "&#9889;",
+      "icon": "⚡",
       "title": "Static Content",
       "description": "Serve images, fonts, scripts and styles with built-in compression and CORS support"
     },
     {
-      "icon": "&#128640;",
+      "icon": "🚀",
       "title": "Template Engine",
       "description": "Dynamic HTML rendering with EJS — layouts, blocks and reusable components"
     },
     {
-      "icon": "&#127760;",
+      "icon": "🌐",
       "title": "Multilingual",
       "description": "Full i18n support with automatic language detection from cookie, query or headers"
     }
@@ -45,13 +45,13 @@
   "image": "",
   "logo": ["/logo.png", "/logo-variant.png"],
 
-  "company": "&laquo;Company&raquo;",
+  "company": "«Company»",
   "formname": ["LLC", "Limited liability company"],
   "inn": "",
   "kpp": "",
   "ogrn": "",
   "rs": "",
-  "bank": "bank &laquo;Bank&raquo;",
+  "bank": "bank «Bank»",
   "bik": "",
   "cs": "",
   "director": ["director", "Surname N."],
