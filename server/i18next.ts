@@ -8,7 +8,6 @@ dotenv.config();
 
 const i18nDir = './i18n';
 const lang = process.env.LANG || 'en';
-const langFile = process.env.LANG_FILE || 'default';
 
 const langs = readdirSync(i18nDir, { withFileTypes: true })
   .filter(d => d.isDirectory())
@@ -27,7 +26,7 @@ i18next
         loadPath: './i18n/{{lng}}/{{ns}}.json',
       },
       ns: langFiles,
-      defaultNS: langFile,
+      defaultNS: 'default',
       debug: false,
       detection: {
         caches: ['cookie'],
