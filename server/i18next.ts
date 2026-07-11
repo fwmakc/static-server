@@ -1,3 +1,4 @@
+import { readdirSync } from 'fs';
 import dotenv from 'dotenv';
 import i18next from 'i18next';
 import Backend from 'i18next-fs-backend';
@@ -5,13 +6,17 @@ import * as i18nextMiddleware from 'i18next-http-middleware';
 
 dotenv.config();
 
+const i18nDir = './i18n';
 const lang = process.env.LANG || 'en';
-const langs: string[] = JSON.parse(process.env.LANGS || `["${lang}"]`);
-
 const langFile = process.env.LANG_FILE || 'default';
-const langFiles: string[] = JSON.parse(
-  process.env.LANG_FILES || `["${langFile}"]`
-);
+
+const langs = readdirSync(i18nDir, { withFileTypes: true })
+  .filter(d => d.isDirectory())
+  .map(d => d.name);
+
+const langFiles = readdirSync(`${i18nDir}/${lang}`)
+  .filter(f => f.endsWith('.json'))
+  .map(f => f.replace(/\.json$/, ''));
 
 i18next
   .use(Backend)
