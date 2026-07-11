@@ -138,9 +138,7 @@ scs
 Чтобы задать новый путь, например, **contacts**, вам нужно добавить следующий код:
 
 ```
-router.route('/contacts').get((req, res) => {
-  res.render('contacts')
-})
+router.route('/contacts').get(render)
 ```
 
 Этот код по запросу пути **/contacts** вызовет рендер сущности **contacts**, которая, согласно настройкам, перенаправит рендер на страницу с тем же именем, но расширением **html** (**contacts.html**) в папке текущего шаблона.
@@ -198,7 +196,7 @@ https://ejs.co/
 Для начала нужно его подключить в файле **routes.ts**:
 
 ```
-import render from '#server/ejs'
+import render from './ejs.js'
 ```
 
 А затем использовать:
@@ -244,13 +242,13 @@ router.route('/page').get((req, res, next) => {
 Например, такая конструкция в коде html страницы:
 
 ```
-<%- include(block('footer/main')) %>
+<%- include(block('footer')) %>
 ```
 
 Подключит файл
 
 ```
-./view/default/blocks/footer/main.html
+./view/default/blocks/footer.html
 ```
 
 ## Текущая страница
@@ -325,7 +323,7 @@ router.route('/page').get((req, res, next) => {
 
 ```
 .set('view engine', 'html')
-.engine('html', ejs.__express)
+.engine('html', ejs.renderFile)
 ```
 
 В этих двух строках шаблонизатор подключается к проекту.
@@ -460,26 +458,26 @@ LANG_FILES = ["agency", "common", "counter", "country", "currency", "datetime", 
 Установить библиотеку:
 
 ```shell script
-yarn add LIBRARY
+npm install LIBRARY
 ```
 
 Удалить библиотеку:
 
 ```shell script
-yarn remove LIBRARY
+npm uninstall LIBRARY
 ```
 
 Также можно устанавливать и удалять несколько библиотек сразу, перечислив их через пробел:
 
 ```shell script
-yarn add LIBRARY1 LIBRARY2 LIBRARY3
+npm install LIBRARY1 LIBRARY2 LIBRARY3
 ```
 
 [^ к оглавлению](#оглавление)
 
 ## Подключение библиотек
 
-Подключать библиотеки к проекту нужно в каждом **js** файле, где вы будете их использовать.
+Подключать библиотеки к проекту нужно в каждом **ts** файле, где вы будете их использовать.
 
 Подключить библиотеку к проекту:
 
@@ -496,7 +494,7 @@ import { OBJECT1, OBJECT2 } from 'LIBRARY'
 Подключить все ресурсы библиотеки:
 
 ```
-import * from 'LIBRARY'
+import * as LIBRARY from 'LIBRARY'
 ```
 
 [^ к оглавлению](#оглавление)

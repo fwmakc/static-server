@@ -47,4 +47,4 @@ const i18nextHandle = i18nextMiddleware.handle(
   i18next as unknown as Parameters<typeof i18nextMiddleware.handle>[0]
 );
 
-export { i18next, i18nextHandle };
+export { i18nextHandle };

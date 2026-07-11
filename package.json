@@ -17,7 +17,7 @@
     "format": "prettier --write \"**/*.{ts,scss,html,md,json}\" --ignore-path .gitignore",
     "scss": "sass static/scss/main.scss static/css/main.css --style=compressed",
     "scss:watch": "sass static/scss/main.scss static/css/main.css --style=compressed --watch",
-    "test": "vitest run",
+    "test": "npm run scss && vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
@@ -30,7 +30,8 @@
     "http-errors": "^2.0.1",
     "i18next": "^24.2.3",
     "i18next-fs-backend": "^2.6.6",
-    "i18next-http-middleware": "^3.9.7"
+    "i18next-http-middleware": "^3.9.7",
+    "morgan": "^1.11.0"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",
@@ -45,7 +46,6 @@
     "@typescript-eslint/parser": "^8.63.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
-    "morgan": "^1.10.0",
     "prettier": "^3.9.5",
     "sass": "^1.101.0",
     "supertest": "^7.2.2",

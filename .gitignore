@@ -12,8 +12,6 @@ static/css/*.css.map
 # Logs
 *.log
 npm-debug.*
-yarn-debug.*
-yarn-error.*
 
 # OS
 .DS_Store
