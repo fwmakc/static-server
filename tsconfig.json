@@ -15,6 +15,12 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["server.ts", "server/**/*.ts", "types/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "static", "view", "tests"]
+  "include": [
+    "server.ts",
+    "app.ts",
+    "server/**/*.ts",
+    "types/**/*.d.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "static", "view"]
 }
