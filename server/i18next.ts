@@ -9,13 +9,32 @@ dotenv.config();
 const i18nDir = './i18n';
 const lang = process.env.DEFAULT_LANG || 'en';
 
-const langs = readdirSync(i18nDir, { withFileTypes: true })
-  .filter(d => d.isDirectory())
-  .map(d => d.name);
+function readLangs(dir: string): string[] {
+  try {
+    return readdirSync(dir, { withFileTypes: true })
+      .filter(d => d.isDirectory())
+      .map(d => d.name);
+  } catch {
+    throw new Error(
+      `i18n directory not found: ${dir}. Expected at project root.`
+    );
+  }
+}
 
-const langFiles = readdirSync(`${i18nDir}/${lang}`)
-  .filter(f => f.endsWith('.json'))
-  .map(f => f.replace(/\.json$/, ''));
+function readNamespaces(dir: string): string[] {
+  try {
+    return readdirSync(dir)
+      .filter(f => f.endsWith('.json'))
+      .map(f => f.replace(/\.json$/, ''));
+  } catch {
+    throw new Error(
+      `Language directory not found: ${dir}. Check DEFAULT_LANG="${lang}" in .env.`
+    );
+  }
+}
+
+const langs = readLangs(i18nDir);
+const langFiles = readNamespaces(`${i18nDir}/${lang}`);
 
 i18next
   .use(Backend)

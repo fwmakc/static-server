@@ -3,7 +3,7 @@
     <h2 class="section__title"><%= lang('features_title') %></h2>
     <p class="section__subtitle"><%= lang('features_subtitle') %></p>
     <div class="features__grid">
-      <% for (let i = 0; i < 3; i++) { %>
+      <% for (let i = 0; lang(`features.${i}.title`) !== `features.${i}.title`; i++) { %>
       <div class="features__card">
         <div class="features__icon"><%= lang(`features.${i}.icon`) %></div>
         <h3 class="features__card-title"><%= lang(`features.${i}.title`) %></h3>

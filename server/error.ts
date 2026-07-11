@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from 'express';
 
-const isDev = process.env.NODE_ENV === 'dev';
+const isDev = process.env.NODE_ENV !== 'production';
 
 const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   res.locals.message = err.message;

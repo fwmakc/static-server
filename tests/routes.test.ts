@@ -27,4 +27,20 @@ describe('Routes', () => {
     expect(res.status).toBe(200);
     expect(res.headers['content-type']).toContain('css');
   });
+
+  it('POST /login should return 200 and JSON', async () => {
+    const res = await request(app)
+      .post('/login')
+      .send({ username: 'test', password: 'test' });
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty('ok', true);
+  });
+
+  it('POST /contact should return 200 and JSON', async () => {
+    const res = await request(app)
+      .post('/contact')
+      .send({ name: 'test', email: 'test@test.com', message: 'hello' });
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty('ok', true);
+  });
 });

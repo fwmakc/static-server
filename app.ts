@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 
-const isDev = process.env.NODE_ENV === 'dev';
+const isDev = process.env.NODE_ENV !== 'production';
 const template = process.env.TEMPLATE || 'view/default';
 
 if (isDev) {

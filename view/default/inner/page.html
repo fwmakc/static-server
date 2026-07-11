@@ -4,8 +4,8 @@
       <%= lang('nav:login') %>
     </h2>
     <form class="contact__form" method="POST" action="/login">
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="password" name="password" placeholder="Password" required />
+      <input type="text" name="username" placeholder="<%= lang('common:username') %>" required />
+      <input type="password" name="password" placeholder="<%= lang('common:password') %>" required />
       <button type="submit"><%= lang('nav:login') %></button>
     </form>
   </div>
