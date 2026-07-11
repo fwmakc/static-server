@@ -1,4 +1,4 @@
-import colors from 'colors'
+import chalk from 'chalk'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -17,9 +17,9 @@ const server = express()
 const isDev = process.env.NODE_ENV === 'dev'
 const template = process.env.TEMPLATE || 'view/default'
 const port = process.env.PORT || 8080
-const message = `${'Server running \n'.bold} in ${
-  (isDev ? 'development' : 'production').yellow
-} mode on ${port.yellow} port\n at ${`http://localhost:${port}`.bold}`
+const message = `${chalk.bold('Server running \n')} in ${
+  chalk.yellow(isDev ? 'development' : 'production')
+} mode on ${chalk.yellow(port)} port\n at ${chalk.bold(`http://localhost:${port}`)}`
 
 if (isDev) server.use(morgan('dev'))
 

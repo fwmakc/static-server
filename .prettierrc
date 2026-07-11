@@ -1,14 +1,5 @@
 {
-  "arrowParents": "avoid",
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-    "/routes/",
-    "/middleware/",
-    "^../(.*)",
-    "^./(.*)"
-  ],
-  "importOrderSeparator": true,
-  "importOrderSortSpecifiers": true,
+  "arrowParens": "avoid",
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,

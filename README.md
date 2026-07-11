@@ -39,15 +39,21 @@ SCS - сокращенно от Static Content Server, сервер управл
 **1**. Выполните клонирование данного репозитория в текущий каталог backend части вашего проекта.
 
 ```shell script
-git clone https://github.com/isengine/scs .
+git clone https://github.com/fwmakc/static-server .
 ```
 
 **2**. Выполните компиляцию
 
-Рекомендуем использовать **yarn**.
+Рекомендуется использовать **yarn** или **npm**.
 
 ```shell script
 yarn
+```
+
+или
+
+```shell script
+npm install
 ```
 
 **3**. Соберите проект
@@ -58,10 +64,22 @@ yarn
 yarn start
 ```
 
+или
+
+```shell script
+npm start
+```
+
 В режиме разработки **development**:
 
 ```shell script
 yarn dev
+```
+
+или
+
+```shell script
+npm run dev
 ```
 
 Вывод проекта через node.js на 8080 порт: http://localhost:8080

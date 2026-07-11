@@ -9,6 +9,7 @@ export default (req, res, next, layout = 'default') => {
 
   res.render(`layouts/${layout}.html`, {
     block,
+    language: req.language,
     page,
     query
   })

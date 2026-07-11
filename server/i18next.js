@@ -1,9 +1,6 @@
-import dotenv from 'dotenv'
 import i18next from 'i18next'
 import Backend from 'i18next-fs-backend'
 import i18nextMiddleware from 'i18next-http-middleware'
-
-dotenv.config()
 
 const lang = process.env.LANG || 'en'
 const langs = JSON.parse(process.env.LANGS || `["${lang}"]`)
