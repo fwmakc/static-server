@@ -1,0 +1,35 @@
+.hero {
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f1f5f9 100%);
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.hero__cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: background 0.2s;
+}
+
+.hero__cta:hover {
+  background: var(--color-primary-dark);
+  text-decoration: none;
+}

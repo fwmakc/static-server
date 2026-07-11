@@ -5,15 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= lang('title') %></title>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
 
   <body>
     <%- include(block('nav')) %>
-    <div class="row">
-      <div class="col-md-2"><%- include(block('leftbar')) %></div>
-      <div class="col-md-8"><%- include(page) %></div>
-      <div class="col-md-2"><%- include(block('rightbar')) %></div>
-    </div>
+    <main><%- include(page) %></main>
     <%- include(block('footer')) %>
   </body>
 </html>

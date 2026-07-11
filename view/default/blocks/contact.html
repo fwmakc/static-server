@@ -1,0 +1,34 @@
+<section class="section contact" id="contact">
+  <div class="container">
+    <h2 class="section__title"><%= lang('contact_title') %></h2>
+    <p class="section__subtitle"><%= lang('contact_text') %></p>
+    <div class="contact__grid">
+      <div class="contact__info">
+        <p><strong><%= lang('company') %></strong></p>
+        <p><%= lang('address') %></p>
+        <p><%= lang('phone.0') %></p>
+        <p><%= lang('email.0') %></p>
+      </div>
+      <form class="contact__form" method="POST" action="/contact">
+        <input
+          type="text"
+          name="name"
+          placeholder="<%= lang('form_name') %>"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="<%= lang('form_email') %>"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="<%= lang('form_message') %>"
+          required
+        ></textarea>
+        <button type="submit"><%= lang('form_submit') %></button>
+      </form>
+    </div>
+  </div>
+</section>
