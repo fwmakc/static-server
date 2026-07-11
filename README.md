@@ -42,47 +42,35 @@ SCS - сокращенно от Static Content Server, сервер управл
 git clone https://github.com/fwmakc/static-server .
 ```
 
-**2**. Выполните компиляцию
-
-Рекомендуется использовать **yarn** или **npm**.
-
-```shell script
-yarn
-```
-
-или
+**2**. Установите зависимости
 
 ```shell script
 npm install
 ```
 
-**3**. Соберите проект
+**3**. Запустите проект
 
-В режиме **production**:
-
-```shell script
-yarn start
-```
-
-или
+В режиме **production** (сборка + запуск):
 
 ```shell script
+npm run build
 npm start
 ```
 
 В режиме разработки **development**:
 
 ```shell script
-yarn dev
-```
-
-или
-
-```shell script
 npm run dev
 ```
 
 Вывод проекта через node.js на 8080 порт: http://localhost:8080
+
+Либо через **Docker**:
+
+```shell script
+docker build -t scs .
+docker run -p 8080:8080 scs
+```
 
 > В случае необходимости изменить конфигурацию сервера, возникновения ошибок и прочих вопросов, смотрите полное руководство.
 
@@ -94,11 +82,13 @@ npm run dev
 
 Backend использует следующие технологии:
 
+- nodejs + typescript
 - express
-- ejs
-- i18n
-- nodejs
-- yarn
+- ejs (шаблонизатор)
+- i18next (мультиязычность)
+- sass (стили)
+- vitest (тесты)
+- docker
 
 [^ к оглавлению](#оглавление)
 
@@ -107,25 +97,43 @@ Backend использует следующие технологии:
 ```
 scs
 ├── i18n
-│   └── LANG
+│   ├── en
+│   └── ru
 ├── server
-│   ├── compression.js
-│   ├── ejs.js
-│   ├── error.js
-│   ├── i18next.js
-│   └── routes.js
+│   ├── compression.ts
+│   ├── ejs.ts
+│   ├── error.ts
+│   ├── i18next.ts
+│   └── routes.ts
 ├── static
+│   ├── css
+│   ├── scss
+│   ├── img
+│   ├── fonts
+│   └── js
+├── tests
+│   └── routes.test.ts
+├── types
+│   └── express.d.ts
 ├── view
 │   └── default
-├── .env
-└── server.js
+│       ├── blocks
+│       ├── inner
+│       └── layouts
+├── .env.example
+├── app.ts
+├── server.ts
+├── tsconfig.json
+├── tsconfig.build.json
+├── Dockerfile
+└── package.json
 ```
 
 [^ к оглавлению](#оглавление)
 
 # Роутинг
 
-Пути задаются в файле **routes.js**.
+Пути задаются в файле **routes.ts**.
 
 Чтобы задать новый путь, например, **contacts**, вам нужно добавить следующий код:
 
@@ -187,7 +195,7 @@ https://ejs.co/
 
 Мы немного расширили функционал шаблонов при помощи middleware.
 
-Для начала нужно его подключить в файле **routes.js**:
+Для начала нужно его подключить в файле **routes.ts**:
 
 ```
 import render from '#server/ejs'
@@ -259,7 +267,7 @@ router.route('/page').get((req, res, next) => {
 <%- include(page) %>
 ```
 
-Не забывайте, что страницы должны быть заданы в файле **routes.js**
+Не забывайте, что страницы должны быть заданы в файле **routes.ts**
 
 [^ к оглавлению](#оглавление)
 
@@ -305,7 +313,7 @@ router.route('/page').get((req, res, next) => {
 
 Для этого важно знать следующее:
 
-- мы используем сервер **node.js** с пакетным менеджером **yarn**,
+- мы используем сервер **node.js** с пакетным менеджером **npm**,
 - сервер работает на фреймворке **express.js**,
 - в качестве шаблонизатора используется библиотека **ejs** для **express.js** фреймворка.
 
@@ -313,7 +321,7 @@ router.route('/page').get((req, res, next) => {
 
 ## Смена шаблонизатора
 
-Мы не ограничиваем вас в использовании любого другого шаблонизатора. Но вам придется самостоятельно установить его и настроить запуск в коде файла **server.js**.
+Мы не ограничиваем вас в использовании любого другого шаблонизатора. Но вам придется самостоятельно установить его и настроить запуск в коде файла **server.ts**.
 
 ```
 .set('view engine', 'html')
@@ -334,7 +342,7 @@ router.route('/page').get((req, res, next) => {
 
 Сервер поддерживает мультиязычность при помощи библиотеки **i18next**.
 
-Все необходимые настройки заданы в файле **i18next.js**.
+Все необходимые настройки заданы в файле **i18next.ts**.
 
 Вывод языков назначается свойству **lang** локального объекта сервера.
 

@@ -3,6 +3,8 @@ node_modules/
 
 # Build output
 dist/
+static/css/*.css
+static/css/*.css.map
 
 # Environment
 .env
