@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import createError from 'http-errors'
 import express from 'express'
-import { compression, shouldCompression } from '#server/compression'
+import { compression, shouldCompress } from '#server/compression'
 import { i18nextHandle, i18nextLang } from '#server/i18next'
 import ejs from 'ejs'
 import routes from '#server/routes'
@@ -24,7 +24,7 @@ const message = `${chalk.bold('Server running \n')} in ${
 if (isDev) server.use(morgan('dev'))
 
 server
-  .use(compression({ filter: shouldCompression }))
+  .use(compression({ filter: shouldCompress }))
   .use(cors())
   .use(express.json())
   .use(i18nextHandle)
