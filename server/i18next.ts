@@ -7,7 +7,7 @@ import * as i18nextMiddleware from 'i18next-http-middleware';
 dotenv.config();
 
 const i18nDir = './i18n';
-const lang = process.env.LANG || 'en';
+const lang = process.env.DEFAULT_LANG || 'en';
 
 const langs = readdirSync(i18nDir, { withFileTypes: true })
   .filter(d => d.isDirectory())
