@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
 import morgan from 'morgan';
 import cors from 'cors';
+import helmet from 'helmet';
 import createError from 'http-errors';
 import express, { Request, Response, NextFunction } from 'express';
 import { compression, shouldCompress } from './server/compression.js';
@@ -8,8 +8,6 @@ import { i18nextHandle } from './server/i18next.js';
 import ejs from 'ejs';
 import routes from './server/routes.js';
 import errorHandler from './server/error.js';
-
-dotenv.config();
 
 const app = express();
 
@@ -21,9 +19,11 @@ if (isDev) {
 }
 
 app
+  .use(helmet())
   .use(compression({ filter: shouldCompress }))
   .use(cors())
   .use(express.json())
+  .use(express.urlencoded({ extended: true }))
   .use(i18nextHandle)
   .use('', routes)
   .use(express.static('./static'))

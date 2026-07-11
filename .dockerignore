@@ -5,3 +5,6 @@ dist
 *.md
 tests
 *.log
+.vscode
+.idea
+coverage

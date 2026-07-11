@@ -36,38 +36,42 @@ function readNamespaces(dir: string): string[] {
 const langs = readLangs(i18nDir);
 const langFiles = readNamespaces(`${i18nDir}/${lang}`);
 
-i18next
-  .use(Backend)
-  .use(i18nextMiddleware.LanguageDetector)
-  .init(
-    {
-      backend: {
-        loadPath: './i18n/{{lng}}/{{ns}}.json',
+const i18nextReady = new Promise<void>((resolve, reject) => {
+  i18next
+    .use(Backend)
+    .use(i18nextMiddleware.LanguageDetector)
+    .init(
+      {
+        backend: {
+          loadPath: './i18n/{{lng}}/{{ns}}.json',
+        },
+        ns: langFiles,
+        defaultNS: 'default',
+        debug: false,
+        detection: {
+          caches: ['cookie'],
+          cookieSameSite: 'strict',
+          lookupQuerystring: 'lang',
+          lookupCookie: 'i18next',
+          order: ['querystring', 'cookie', 'header'],
+        },
+        saveMissing: false,
+        fallbackLng: lang,
+        preload: langs,
       },
-      ns: langFiles,
-      defaultNS: 'default',
-      debug: false,
-      detection: {
-        caches: ['cookie'],
-        cookieSameSite: 'strict',
-        lookupQuerystring: 'lang',
-        lookupCookie: 'i18next',
-        order: ['querystring', 'cookie', 'header'],
-      },
-      saveMissing: false,
-      fallbackLng: lang,
-      preload: langs,
-    },
-    err => {
-      if (err) {
-        return console.error(err);
+      err => {
+        if (err) {
+          console.error(err);
+          return reject(err);
+        }
+        console.log('i18next is ready');
+        resolve();
       }
-      console.log('i18next is ready');
-    }
-  );
+    );
+});
 
 const i18nextHandle = i18nextMiddleware.handle(
   i18next as unknown as Parameters<typeof i18nextMiddleware.handle>[0]
 );
 
-export { i18nextHandle };
+export { i18nextHandle, i18nextReady };

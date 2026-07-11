@@ -8,6 +8,7 @@ COPY . .
 RUN npm run build && npm run scss
 
 FROM node:20-alpine AS production
+ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package*.json ./
@@ -19,5 +20,6 @@ COPY --from=builder /app/view ./view
 COPY --from=builder /app/i18n ./i18n
 COPY --from=builder /app/.env.example ./.env
 
+USER node
 EXPOSE 8080
 CMD ["node", "dist/server.js"]

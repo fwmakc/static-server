@@ -8,8 +8,15 @@ const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   res.locals.language = req.language;
   res.locals.lang = req.t;
 
-  res.status(err.status || 500);
-  res.render('error');
+  const status = err.status || err.statusCode || 500;
+
+  res.status(status).render('error', (renderErr: Error | null, html: string) => {
+    if (renderErr) {
+      res.type('text/html').send(`<h1>${err.message}</h1>`);
+      return;
+    }
+    res.send(html);
+  });
 };
 
 export default errorHandler;
