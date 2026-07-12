@@ -9,6 +9,7 @@ RUN npm run build && npm run scss
 
 FROM node:24-alpine AS production
 ENV NODE_ENV=production
+ENV HOST=0.0.0.0
 WORKDIR /app
 
 COPY package*.json ./

@@ -6,16 +6,18 @@ import { i18nextReady } from './server/i18next.js';
 dotenv.config();
 
 const port = parseInt(process.env.PORT || '8080', 10);
+const host = process.env.HOST || 'localhost';
+const scheme = process.env.SCHEME || 'http';
 const isDev = process.env.NODE_ENV !== 'production';
 const message = `${chalk.bold('Server running')}\n in ${chalk.yellow(
   isDev ? 'development' : 'production'
 )} mode on ${chalk.yellow(port)} port\n at ${chalk.bold(
-  `http://localhost:${port}`
+  `${scheme}://${host}:${port}`
 )}`;
 
 i18nextReady
   .then(() => {
-    const server = app.listen(port, () => console.log(message));
+    const server = app.listen(port, host, () => console.log(message));
     server.on('error', (e: NodeJS.ErrnoException) => {
       if (e.code === 'EADDRINUSE') {
         console.error(`Port ${port} is already in use`);
