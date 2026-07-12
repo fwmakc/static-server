@@ -76,8 +76,6 @@ const i18nextReady = new Promise<void>((resolve, reject) => {
     );
 });
 
-const i18nextHandle = i18nextMiddleware.handle(
-  i18next as unknown as Parameters<typeof i18nextMiddleware.handle>[0]
-);
+const i18nextHandle = i18nextMiddleware.handle(i18next);
 
 export { i18nextHandle, i18nextReady };
