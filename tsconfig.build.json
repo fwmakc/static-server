@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
   "include": ["server.ts", "app.ts", "server/**/*.ts", "types/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "static", "view", "tests"]
+  "exclude": ["node_modules", "dist", "static", "templates", "tests"]
 }

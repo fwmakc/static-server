@@ -22,5 +22,5 @@
     "types/**/*.d.ts",
     "tests/**/*.ts"
   ],
-  "exclude": ["node_modules", "dist", "static", "view"]
+  "exclude": ["node_modules", "dist", "static", "templates"]
 }

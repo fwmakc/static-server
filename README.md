@@ -74,9 +74,9 @@ npm run dev
 | `HOST` | `localhost` | Адрес привязки (`0.0.0.0` для Docker) |
 | `SCHEME` | `http` | Схема URL для баннера (`https` за reverse proxy) |
 | `DEFAULT_LANG` | `en` | Язык по умолчанию (fallback) |
-| `TEMPLATE` | `view/default` | Директория шаблонов |
+| `TEMPLATE` | `default` | Имя шаблона (в `templates/`) |
 
-> Сервер использует относительные пути (`./static`, `./i18n`, `./view/default`) и должен запускаться из корневой директории проекта.
+> Сервер использует относительные пути (`./static`, `./i18n`, `./templates/default`) и должен запускаться из корневой директории проекта.
 
 ## npm-скрипты
 
@@ -216,7 +216,7 @@ https://ejs.co/
 По-умолчанию, полный путь выглядит так:
 
 ```
-./view/default/
+./templates/default/
 ```
 
 По-умолчанию файлы шаблона имеют расширение **ejs**, однако мы настроили шаблонизатор на чтение **html** файлов.
@@ -240,7 +240,7 @@ router.route('/page').get(render)
 Шаблонизатор поддерживает макеты, хранящиеся в папке
 
 ```
-./view/default/layouts/
+./templates/default/layouts/
 ```
 
 По-умолчанию используется макет **default**.
@@ -256,7 +256,7 @@ router.route('/page').get((req, res, next) => {
 Такой вызов подключит файл
 
 ```
-./view/default/layouts/layout.html
+./templates/default/layouts/layout.html
 ```
 
 ## Блоки
@@ -264,7 +264,7 @@ router.route('/page').get((req, res, next) => {
 Также шаблонизатор настроен на чтение блоков из папки
 
 ```
-./view/default/blocks/
+./templates/default/blocks/
 ```
 
 Разрешено вызывать блоки с любой вложенностью.
@@ -278,7 +278,7 @@ router.route('/page').get((req, res, next) => {
 Подключит файл
 
 ```
-./view/default/blocks/footer.html
+./templates/default/blocks/footer.html
 ```
 
 ## Текущая страница
@@ -286,7 +286,7 @@ router.route('/page').get((req, res, next) => {
 Страницы шаблона располагаются в папке
 
 ```
-./view/default/inner/
+./templates/default/inner/
 ```
 
 Чтобы подключить вызов текущей страницы в макете, нужно написать такой код:

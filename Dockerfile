@@ -17,7 +17,7 @@ RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/static ./static
-COPY --from=builder /app/view ./view
+COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/i18n ./i18n
 COPY --from=builder /app/.env.example ./.env
 

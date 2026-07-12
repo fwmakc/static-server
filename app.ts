@@ -12,7 +12,7 @@ import errorHandler from './server/error.js';
 const app = express();
 
 const isDev = process.env.NODE_ENV !== 'production';
-const template = process.env.TEMPLATE || 'view/default';
+const template = process.env.TEMPLATE || 'default';
 
 if (isDev) {
   app.use(morgan('dev'));
@@ -27,7 +27,7 @@ app
   .use(i18nextHandle)
   .use('', routes)
   .use(express.static('./static'))
-  .set('views', `./${template}/`)
+  .set('views', `./templates/${template}/`)
   .set('view engine', 'html')
   .engine('html', ejs.renderFile)
   .use((_req: Request, _res: Response, next: NextFunction) => {
