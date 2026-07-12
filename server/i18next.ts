@@ -33,10 +33,16 @@ function readNamespaces(dir: string): string[] {
   }
 }
 
-const langs = readLangs(i18nDir);
-const langFiles = readNamespaces(`${i18nDir}/${lang}`);
-
 const i18nextReady = new Promise<void>((resolve, reject) => {
+  let langs: string[];
+  let langFiles: string[];
+  try {
+    langs = readLangs(i18nDir);
+    langFiles = readNamespaces(`${i18nDir}/${lang}`);
+  } catch (err) {
+    return reject(err);
+  }
+
   i18next
     .use(Backend)
     .use(i18nextMiddleware.LanguageDetector)

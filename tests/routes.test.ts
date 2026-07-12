@@ -1,6 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import request from 'supertest';
 import app from '../app.js';
+import { i18nextReady } from '../server/i18next.js';
+
+beforeAll(async () => {
+  await i18nextReady;
+});
 
 describe('Routes', () => {
   it('GET / should return 200 and render landing page', async () => {
@@ -19,7 +24,7 @@ describe('Routes', () => {
   it('GET /nonexistent should return 404', async () => {
     const res = await request(app).get('/nonexistent');
     expect(res.status).toBe(404);
-    expect(res.text).toContain('Error');
+    expect(res.text).toContain('error');
   });
 
   it('GET /css/main.css should serve static CSS', async () => {

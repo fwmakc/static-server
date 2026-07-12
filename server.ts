@@ -7,7 +7,7 @@ dotenv.config();
 
 const port = parseInt(process.env.PORT || '8080', 10);
 const isDev = process.env.NODE_ENV !== 'production';
-const message = `${chalk.bold('Server running \n')} in ${chalk.yellow(
+const message = `${chalk.bold('Server running')}\n in ${chalk.yellow(
   isDev ? 'development' : 'production'
 )} mode on ${chalk.yellow(port)} port\n at ${chalk.bold(
   `http://localhost:${port}`
