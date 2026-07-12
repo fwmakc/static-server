@@ -1,6 +1,6 @@
 {
-  "title": "Static Content Server",
-  "sub": "Fast, flexible and reliable static content server built on Node.js and Express",
+  "title": "Static Server",
+  "sub": "Fast, flexible and reliable static server built on Node.js and Express",
   "offer": "Ready to use",
   "description": "Description",
   "calltoaction": "Get Started",

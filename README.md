@@ -1,6 +1,6 @@
-# Среда разработки
+# Static Server
 
-SCS - сокращенно от Static Content Server, сервер управления статическим контентом.
+Static Server — сервер управления статическим контентом.
 
 Это сервер, построенный на базе Node.js и фреймворка Express, который может отдавать статический контент, такой как изображения, шрифты, файлы скриптов и стилей, **html** страницы.
 
@@ -72,7 +72,6 @@ npm run dev
 | `NODE_ENV` | `development` | Режим работы (`development` / `production`) |
 | `PORT` | `8080` | Порт сервера |
 | `HOST` | `localhost` | Адрес привязки (`0.0.0.0` для Docker) |
-| `SCHEME` | `http` | Схема URL для баннера (`https` за reverse proxy) |
 | `DEFAULT_LANG` | `en` | Язык по умолчанию (fallback) |
 | `TEMPLATE` | `default` | Имя шаблона (в `templates/`) |
 
@@ -96,8 +95,8 @@ npm run dev
 Либо через **Docker**:
 
 ```shell script
-docker build -t scs .
-docker run -p 8080:8080 scs
+docker build -t static-server .
+docker run -p 8080:8080 static-server
 ```
 
 > В случае необходимости изменить конфигурацию сервера, возникновения ошибок и прочих вопросов, смотрите полное руководство.

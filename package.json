@@ -1,7 +1,7 @@
 {
-  "name": "scs",
+  "name": "static-server",
   "version": "1.0.0",
-  "description": "Static Content Server",
+  "description": "Static Server",
   "main": "dist/server.js",
   "type": "module",
   "license": "MIT",

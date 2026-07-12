@@ -7,12 +7,11 @@ dotenv.config();
 
 const port = parseInt(process.env.PORT || '8080', 10);
 const host = process.env.HOST || 'localhost';
-const scheme = process.env.SCHEME || 'http';
 const isDev = process.env.NODE_ENV !== 'production';
 const message = `${chalk.bold('Server running')}\n in ${chalk.yellow(
   isDev ? 'development' : 'production'
 )} mode on ${chalk.yellow(port)} port\n at ${chalk.bold(
-  `${scheme}://${host}:${port}`
+  `http://${host}:${port}`
 )}`;
 
 i18nextReady
